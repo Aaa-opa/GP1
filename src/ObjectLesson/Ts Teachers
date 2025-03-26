@@ -1,0 +1,9 @@
+interface Teacher {
+    name: string;
+    age: number;
+    jobtitle:string;
+    lessons:number;
+    recharge: () => void;
+}
+
+export default Teacher
