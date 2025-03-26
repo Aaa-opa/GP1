@@ -1,3 +1,4 @@
+// 定义一个接口
 interface Person {
   name: string;
   age: number;
