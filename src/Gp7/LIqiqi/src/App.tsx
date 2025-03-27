@@ -6,7 +6,7 @@ const App = () => {
 
   return (
     <>
-      <SysPage2></SysPage2>
+      <SysPage2></SysPage2>我的提交
     </>
   );
 }
