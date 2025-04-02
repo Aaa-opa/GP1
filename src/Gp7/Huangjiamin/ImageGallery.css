@@ -11,12 +11,12 @@
     margin-bottom: 30px;
   }
   
-  /* 图片网格 - 改为三列布局 */
+  /* 图片三列布局 */
   .image-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 固定三列 */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 20px;
-    justify-content: center; /* 内容居中 */
+    justify-content: center; /* 居中 */
   }
   
   .image-card {
