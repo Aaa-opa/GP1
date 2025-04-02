@@ -1,86 +1,61 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
-function LoginForm() {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: ''
-  });
-  const [error, setError] = useState('');
+function BoxGenerator() {
+  const [count, setCount] = useState(0);
+  const [activeBox, setActiveBox] = useState(null);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+  return (
+    <div className="flex flex-col items-center min-h-screen bg-gray-50 py-8 px-4">
+      {/* 美化后的按钮 */}
+        <button
+        type="button"
+        className="px-6 py-3 text-white font-semibold rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 active:scale-95 focus:outline-none focus:ring-4 focus:ring-purple-300"
+        onClick={() => setCount(count + 1)}
+      >
+        <span className="inline-flex items-center space-x-2">
+          <svg className="w-10 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 4v16m8-8h-2.5v-1.5a1.5 1.5 0 00-3 0V12H10V9.5a1.5 1.5 0 00-3 0V12H6V9.5a1.5 1.5 0 00-3 0V12H4V4h16z"/>
+          </svg>
+          <span>添加方块</span>
+        </span>
+      </button>
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    // 简单的验证
-    if (!formData.username || !formData.password) {
-      setError('用户名和密码不能为空');
-      return;
-    }
-    
-    // 这里可以添加实际的登录逻辑
-    console.log('登录数据:', formData);
-    setError('');
-    alert('登录成功!');
-  };
+      {/* 美化后的方块容器 */}
+      <div className="flex flex-wrap gap-4 mt-8 max-w-4xl w-full">
+        {Array.from({ length: count }).map((_, index) => (
+          <div
+            key={index}
+            className={`w-16 h-16 relative cursor-pointer transition-transform duration-300 ease-in-out transform ${
+              activeBox === index ? 'scale-110' : ''
+            }`}
+            onClick={() => setActiveBox(index)}
+            style={{
+              animation: `boxFloat ${Math.random() * 2 + 1}s ease-in-out infinite`,
+              background: `linear-gradient(45deg, #ff6b6b, #4ecdc4)`
+            }}
+          >
+            {/* 添加序号显示 */}
+            <span className="absolute inset-0 flex items-center justify-center text-white font-bold text-xl">
+              {index + 1}
+            </span>
+
+            {/* 添加点击反馈光环 */}
+            <div className={`absolute inset-0 rounded-xl ${
+              activeBox === index ? 'border-4 border-purple-400' : ''
+            }`} />
+          </div>
+        ))}
+      </div>
+
+      {/* 添加浮动动画 */}
+      <style>{`
+        @keyframes boxFloat {
+          0%, 100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-4px) scale(1.02); }
+        }
+      `}</style>
+    </div>
+  );
 }
 
-// 简单的样式对象
-const styles = {
-  container: {
-    maxWidth: '400px',
-    margin: '50px auto',
-    padding: '20px',
-    borderRadius: '8px',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-    backgroundColor: '#fff',
-  },
-  title: {
-    textAlign: 'center',
-    color: '#333',
-    marginBottom: '20px',
-  },
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  formGroup: {
-    marginBottom: '15px',
-  },
-  label: {
-    display: 'block',
-    marginBottom: '5px',
-    fontWeight: 'bold',
-    color: '#555',
-  },
-  input: {
-    width: '100%',
-    padding: '10px',
-    border: '1px solid #ddd',
-    borderRadius: '4px',
-    fontSize: '16px',
-  },
-  button: {
-    padding: '10px 15px',
-    backgroundColor: '#007bff',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    fontSize: '16px',
-    marginTop: '10px',
-  },
-  error: {
-    color: 'red',
-    textAlign: 'center',
-    marginBottom: '15px',
-  }
-};
-
-export default LoginForm;
+export default BoxGenerator;
