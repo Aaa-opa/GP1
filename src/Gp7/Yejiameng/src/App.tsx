@@ -1,17 +1,17 @@
 import React from 'react';
-
-
-import SysPage2 from './SysPage2';
+import PageWithNoState from './PageState/PageWithNoState';
+import PageWithState from './PageState/PageWithState';
+import PageWithStateObject from './PageState/PageWithStateObject';
+import PageWithStateArray from './PageState/PageWithStateArray';
+import BoxGenerator from './PageState/Demo1';
 
 const App = () => {
 
   return (
     <>
-      <SysPage2></SysPage2>
+      <BoxGenerator />
     </>
   );
 }
 
 export default App;
-
-
