@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './ImageGallery.css'; // 确保CSS文件存在且路径正确
+import './ImageGallery.css'; 
 
 const ImageGallery = () => {
-  // 图片数据（请确认图片路径是否正确）
+  
   const images = [
     { src: "/img/h1.jpg", desc: "落日" },
     { src: "/img/h4.jpg", desc: "落日" },
