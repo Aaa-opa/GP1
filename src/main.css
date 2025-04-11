@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.dark-theme {
+    background-image: url('/public/img/001.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+  }
+  
+  .light-theme {
+    background-image: url('/public/img/002.jpg');
+    background-size: cover;
+    background-position: center;
+    color: black;
+  }
+  
+  input {
+    color: rgb(0, 0, 0);
+    background-color: rgb(220, 168, 236);
+    opacity: 0.9; /* 可选：让输入框背景稍微透明 */
+  }
+  .global-state-container {
+    background-image: url('/public/img/004.jpg'); /* 替换为你的背景图片路径 */
+    background-size: cover; /* 确保图片覆盖整个容器 */
+    background-position: center; /* 图片居中显示 */
+  }

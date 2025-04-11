@@ -1,13 +1,12 @@
-import React from "react";
-import Moban from './Gp7/Moban';
-import ImageGallery from "./Gp7/Huangjiamin";
-const App = () => {
+import React from'react';
+import Hhh from './Hhh/hhh';
 
-  return (
-    <>
-      <Moban></Moban>
-    </>
-  );
+function App() {
+    return (
+        <div className="App">
+            <Hhh></Hhh>
+        </div>
+    );
 }
 
 export default App;
