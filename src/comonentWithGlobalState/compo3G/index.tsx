@@ -12,11 +12,11 @@ const Compo3G = () => {
         // 返回一个包含组件 UI 的 JSX 元素，根据 isDark 的值动态设置组件的样式类名
         <div className={`p-4 border rounded-lg ${isDark? 'dark-theme' : 'light-theme'}`}>
             {/* 标题元素，显示该组件的名称和主要功能描述 */}
-            <h2 className="text-xl font-bold mb-4">组件3G</h2>
+            <h2 className="text-xl font-bold mb-4">总工程</h2>
             {/* 段落元素，显示当前的全局计数值 */}
-            <p className="mb-2">当前计数: {count}</p>
+            <p className="mb-2">共计数: {count}</p>
             {/* 段落元素，显示全局待办事项的数量 */}
-            <p className="mb-2">待办事项数量: {todos.length}</p>
+            <p className="mb-2">待完成事件: {todos.length}</p>
             {/* 按钮元素，点击时调用 toggleTheme 函数来切换全局主题 */}
             <button
                 // 根据 isDark 的值动态设置按钮的背景颜色和文本颜色相关的样式类名
@@ -25,7 +25,7 @@ const Compo3G = () => {
                 } px-4 py-2 rounded hover:opacity-90`}
                 onClick={toggleTheme}
             >
-                切换全局主题
+                全主题
             </button>
         </div>
     );

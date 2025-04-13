@@ -1,7 +1,9 @@
 import React from'react';
+import { useState } from "react";
 import MyTitle from '../comonentWithGlobalState/MyTitle/MyTitle';
 import Sidebar from '../comonentWithGlobalState/Sidebar/Sidebar';
 import ComponentWithGlobalState from '../ComponentWithGlobalState/ComponentWithGlobalState';
+
 
 const Hhh = () => {
     // 定义左侧栏的标题和内容

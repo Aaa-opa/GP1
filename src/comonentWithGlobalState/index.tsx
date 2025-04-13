@@ -1,4 +1,4 @@
-import Compo1G from "./compo1G"
+import Compo1G from "./Wxj"
 import Compo2G from "./compo2G"
 import Compo3G from "./compo3G"
 import HashMine from "./HashMine"

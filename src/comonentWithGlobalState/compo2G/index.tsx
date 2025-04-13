@@ -24,7 +24,7 @@ const Compo2G = () => {
         // 返回一个包含组件 UI 的 JSX 元素
         <div className={`p-4 border rounded-lg h-[200px] ${isDark? 'dark-theme' : 'light-theme'}`}>
             {/* 标题元素，显示组件的名称和功能描述 */}
-            <h2 className="text-xl font-bold mb-4">组件2G</h2>
+            <h2 className="text-xl font-bold mb-4">备忘录</h2>
             {/* 包含输入框和按钮的容器，使用 flex 布局 */}
             <div className="flex gap-2 mb-4">
                 {/* 输入框元素，绑定了 input 状态和 onChange 事件，用于实时更新输入框内容 */}
