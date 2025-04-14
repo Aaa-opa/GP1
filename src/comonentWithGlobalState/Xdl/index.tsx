@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './index.css';
 
 const App: React.FC = () => {
   const [isShaking, setIsShaking] = useState(false);
