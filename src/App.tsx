@@ -5,6 +5,7 @@ import Lqq from './comonentWithGlobalState/Lqq';
 import Xdl from './comonentWithGlobalState/Xdl';
 import Hjm from './comonentWithGlobalState/Hjm';
 import Hhj from './comonentWithGlobalState/Hhj';
+import Yjm from './comonentWithGlobalState/Yjm';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
             <Xdl></Xdl>
             <Hjm></Hjm>
             <Hhj></Hhj>
+            <Yjm></Yjm>
            
         </div>
     );
