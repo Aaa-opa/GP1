@@ -1,0 +1,49 @@
+/* src/App.css */
+
+.app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./image.jpg'); /* 替换为你的图片 URL */
+    background-size: 80%; /* 调整大小以使图片比使用 cover 时更小 */
+    background-position: center;
+    background-repeat: no-repeat; /* 确保图片不重复 */
+    transition: transform 0.1s ease; /* 平滑的抖动过渡效果 */
+}
+
+.shake {
+    animation: shakeEffect 0.5s;
+}
+
+.shake-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 初始阴影 */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease; /* 平滑过渡 */
+}
+
+.shake-button:hover {
+    transform: scale(1.05); /* 略微放大按钮 */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* 增强阴影 */
+    background-color: #45a049; /* 悬停时稍微变深的颜色 */
+}
+
+@keyframes shakeEffect {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translate(-5px, 0);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translate(5px, 0);
+    }
+}
