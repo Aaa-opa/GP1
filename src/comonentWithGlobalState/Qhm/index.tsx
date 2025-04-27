@@ -1,206 +1,86 @@
-import { useState } from "react";
-import useStore from "./useStore";
+import React, { useState, useEffect } from 'react';
 
-export default function Qhm() {
-  const imageData = [
-    {
-      url: "/img/02.jpg",
-      description: "云峰",
-      location: "sky.光遇-云野",
-    },
-    {
-      url: "/img/01.jpg",
-      description: "蝴蝶平原",
-      location: "sky.光遇-云野",
-    },
-    {
-      url: "/img/03.jpg",
-      description: "秘密花园",
-      location: "sky.光遇-雨林",
-    },
-    {
-      url: "/img/04.jpg",
-      description: "霞谷冰道",
-      location: "sky.光遇-霞谷",
-    },
-    {
-      url: "/img/05.jpg",
-      description: "石壁",
-      location: "sky.光遇-九色鹿季",
-    },
-    {
-      url: "/img/06.jpg",
-      description: "姆明季地图",
-      location: "sky.光遇-姆明季",
-    },
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [showOverlay, setShowOverlay] = useState(false);
-
-  const prevImage = () => {
-    setCurrentIndex((prev) => (prev === 0 ? imageData.length - 1 : prev - 1));
-  };
-
-  const nextImage = () => {
-    setCurrentIndex((prev) => (prev === imageData.length - 1 ? 0 : prev + 1));
-  };
-
-  const { isDark, toggleTheme } = useStore();
-
-  return (
-    <div
-      className={`relative flex flex-col items-center gap-6 p-6 max-w-3xl mx-auto rounded-xl shadow-md ${
-        isDark
-          ? "bg-gradient-to-r from-gray-800 to-gray-900 text-white"
-          : "bg-gradient-to-r from-pink-300 to-white"
-      }`}
-    >
-      {/* 图片容器 */}
-      <div className="relative w-full h-80 overflow-hidden rounded-lg">
-        <img
-          src={imageData[currentIndex].url}
-          alt={imageData[currentIndex].description}
-          className="w-full h-full object-cover transition-opacity duration-500"
-          key={currentIndex}
-        />
-
-        {/* 右上角"其他"按钮 */}
-        <button
-          onClick={() => setShowOverlay(true)}
-          className="absolute top-4 right-4 px-3 py-1 bg-black/50 text-white rounded-full hover:bg-black/70 transition-colors"
-        >
-          简介
-        </button>
-
-        {/* 渐变遮罩简介层 */}
-        <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
-          <h3 className="text-white text-xl font-bold mb-1">
-            {imageData[currentIndex].location}
-          </h3>
-          <p className="text-white/90 mb-1">{imageData[currentIndex].description}</p>
-        </div>
-      </div>
-
-      {/* 控制按钮组 */}
-      <div className="flex gap-4">
-        <button
-          onClick={prevImage}
-          className={`px-5 py-2 ${
-            isDark ? "bg-gray-700" : "bg-pink-300"
-          } text-white rounded-lg hover:opacity-90 transition-colors flex items-center`}
-        >
-          <svg
-            className="w-4 h-4 mr-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          上一张
-        </button>
-
-        <button
-          onClick={nextImage}
-          className={`px-5 py-2 ${
-            isDark ? "bg-gray-700" : "bg-pink-300"
-          } text-white rounded-lg hover:opacity-90 transition-colors flex items-center`}
-        >
-          下一张
-          <svg
-            className="w-4 h-4 ml-1"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
-
-        <button
-          onClick={toggleTheme}
-          className={`px-5 py-2 ${
-            isDark ? "bg-yellow-400" : "bg-gray-800"
-          } text-white rounded-lg hover:opacity-90 transition-colors flex items-center`}
-        >
-          {isDark ? "切换到明亮模式" : "切换到暗黑模式"}
-        </button>
-      </div>
-
-      {/* 进度指示器 */}
-      <div className="flex gap-2">
-        {imageData.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`h-2 w-8 rounded-full transition-all ${
-              index === currentIndex
-                ? isDark
-                  ? "bg-yellow-400"
-                  : "bg-pink-400"
-                : isDark
-                ? "bg-gray-600 hover:bg-gray-500"
-                : "bg-white hover:bg-pink-100"
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* 全屏遮罩层 */}
-      {showOverlay && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-8">
-          <div className="bg-white rounded-xl max-w-2xl w-full p-8 relative max-h-[90vh] overflow-y-auto">
-            <button
-              onClick={() => setShowOverlay(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-
-            <h2 className="text-2xl font-bold mb-4 text-pink-500">简介</h2>
-            <div className="space-y-4">
-              <p>
-                《光·遇》是制作人陈星汉历时七年的全新力作。
-                在《光·遇》中，你将开启一段最暖心纯粹的社交冒
-                险体验。清新治愈的唯美画风，不期而遇的真挚美
-                好，柔美的风云间充满着温暖与感动，唤醒你心中
-                最柔软的部分。这是一场拥抱自由和温暖的云端之
-                旅。与你心爱的人们携手，在这座旷世的天空王国
-                中翱翔，爱的力量将支持你一路前行。
-              </p>
-
-              <p className="text-gray-600">
-                开发者的话：
-                亲爱的旅人们:爱让人走出孤岛！光遇姆明季年度重磅联动开启。
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
+// 组件的 props 类型定义，isDark 表示是否为深色模式，默认为 false
+interface Qhm {
+    isDark?: boolean;
 }
-    
+
+const Qhm: React.FC<Qhm> = ({ isDark = false }) => {
+    // 用于存储当前的亮度值，初始为 1.0（即正常亮度）
+    const [brightness, setBrightness] = useState(1.0);
+    // 用于控制亮度控制面板的显示和隐藏，初始为 false
+    const [showControl, setShowControl] = useState(false);
+
+    // 副作用函数，当 brightness 变化时，更新页面的亮度滤镜效果
+    useEffect(() => {
+        const appElement = document.getElementById('root') || document.body;
+        appElement.style.filter = `brightness(${brightness})`;
+        appElement.style.transition = 'filter 0.3s ease';
+
+        return () => {
+            appElement.style.filter = '';
+            appElement.style.transition = '';
+        };
+    }, [brightness]);
+
+    return (
+        <div className="relative">
+            {/* 主控制按钮，点击时切换亮度控制面板的显示和隐藏 */}
+            <button
+                onClick={() => setShowControl(!showControl)}
+                className={`p-2 rounded-full ${
+                    isDark? 'bg-white hover:bg-pink-300' : 'bg-orange-300 hover:bg-white'
+                }`}
+                aria-label="亮度控制"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-20 w-20"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                    />
+                </svg>
+            </button>
+            {/* 亮度控制面板，根据 showControl 的值决定是否显示 */}
+            {showControl && (
+                <div className={`absolute top-full right-0 mt-2 p-4 rounded-lg shadow-xl z-50 ${
+                    isDark? 'bg-gray-800' : 'bg-white'
+                }`}
+                style={{ width: '200px' }}
+                >
+                    <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm">亮度</span>
+                        <span className="text-sm font-medium">{Math.round(brightness * 100)}%</span>
+                    </div>
+                    <input
+                        type="range"
+                        min="0.1"
+                        max="1.0"
+                        step="0.05"
+                        value={brightness}
+                        onChange={(e) => setBrightness(parseFloat(e.target.value))}
+                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                        style={{
+                            background: `linear-gradient(to right, #888 0%, #888 ${
+                                ((brightness - 0.1) / 0.9) * 100
+                            }%, #ccc ${((brightness - 0.1) / 0.9) * 100}%, #ccc 100%)`
+                        }}
+                    />
+                    <div className="flex justify-between text-xs mt-1">
+                        <span>10%</span>
+                        <span>100%</span>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default Qhm;
