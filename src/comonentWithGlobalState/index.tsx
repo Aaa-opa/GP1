@@ -7,7 +7,7 @@ import Xdl from "../comonentWithGlobalState/Xdl";
 import Yjm from "../comonentWithGlobalState/Yjm";
 import Hjm from "../comonentWithGlobalState/Hjm";
  
-function ComponentWithGlobalState() {
+/*function ComponentWithGlobalState() {
   return (
     <div className="container mx-auto p-8 h-screen global-state-container">
       <h1 className="text-2xl font-bold mb-8">全局状态组件示例</h1>
@@ -18,4 +18,4 @@ function ComponentWithGlobalState() {
   )
 }
  
-export default ComponentWithGlobalState
+export default ComponentWithGlobalState;*/

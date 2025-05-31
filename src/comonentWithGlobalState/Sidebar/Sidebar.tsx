@@ -1,6 +1,6 @@
-import React from'react';
+//import React from'react';
 
-const Sidebar = ({ title, menuItems }) => {
+/*const Sidebar = ({ title, menuItems }) => {
     return (
         <div className="w-30 bg-blue-400 text-pink-300 p-4">
             <h2 className="text-xl font-bold mb-4">{title}</h2>
@@ -18,4 +18,4 @@ const Sidebar = ({ title, menuItems }) => {
     );
 };
 
-export default Sidebar;
+export default Sidebar;*/
