@@ -1,7 +1,6 @@
 // src/App.tsx
 import React from 'react';
-import Xdl from './comonentWithGlobalState/Xdl';
-import Lqq from './comonentWithGlobalState/Lqq';
+
 
 
 function App() {
@@ -9,8 +8,12 @@ function App() {
   return (
     <div className="App">
       <h1>Hello World!</h1> {/* 简单测试内容 */}
-      <Xdl></Xdl>
+<<<<<<< HEAD
+      
 
+=======
+      
+>>>>>>> 204a214f4e17eaae916096a78fd30d5d52e0f904
     </div>
   );
 }
