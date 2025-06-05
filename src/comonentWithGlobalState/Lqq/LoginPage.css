@@ -1,0 +1,41 @@
+/* LoginPage.css */
+.login-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.login-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.61493cebddb4a302201083cc55eb3feb?rik=m2CoJy%2fk2HoDRQ&riu=http%3a%2f%2fpic5.bbzhi.com%2ffengjingbizhi%2fshanshuifengjingbizhi%2fshanshuifengjingbizhi_435593_12.jpg&ehk=7wnl68zYBJW%2bWiVMWIlgb%2b7NLmfImHtU%2bCVGqmSPD0M%3d&risl=&pid=ImgRaw&r=0');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  animation: moveBackground 10s infinite alternate;
+}
+
+@keyframes moveBackground {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
